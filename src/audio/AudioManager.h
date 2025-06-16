@@ -3,7 +3,11 @@
 
 #include <map>
 #include <string>
+#ifndef USE_SDL2
 #include <SDL_mixer.h>
+#else
+#include <SDL2/SDL_mixer.h>
+#endif
 
 namespace jvgs
 {

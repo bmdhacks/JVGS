@@ -2,54 +2,31 @@
 # GENERAL OPTIONS
 ##########################
 # We need 2.6 because cmake has freetype2 support from then onwards.
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 PROJECT(JVGS)
 
-##########################
-# SDL
-##########################
-FIND_PACKAGE(SDL)
-IF(SDL_FOUND)
-    MESSAGE( STATUS "SDL has been found:" )
-    MESSAGE( STATUS "\tCFLAGS : ${SDL_INCLUDE_DIR}" )
-    MESSAGE( STATUS "\tLDFLAGS: ${SDL_LIBRARY}" )
-ELSE(SDL_FOUND)
-    SET( SDL_INCLUDE_DIR NOTFOUND )
-    SET( SDL_LIBRARY NOTFOUND )
-    MESSAGE( STATUS "SDL is required")
-ENDIF(SDL_FOUND)
+# Add debug symbols
+SET(CMAKE_BUILD_TYPE Debug)
+SET(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 
 ##########################
-# SDL_mixer
+# SDL2 (required)
 ##########################
-FIND_PACKAGE(SDL_mixer)
-IF( SDLMIXER_FOUND )
-    # take a lucky guess
-    IF(${SDLMIXER_INCLUDE_DIR} MATCHES "NOTFOUND")
-        SET(SDLMIXER_INCLUDE_DIR ${SDL_INCLUDE_DIR})
-    ENDIF(${SDLMIXER_INCLUDE_DIR} MATCHES "NOTFOUND")
-        MESSAGE( STATUS "SDL_mixer has been found:" )
-        MESSAGE( STATUS "\tCFLAGS : ${SDLMIXER_INCLUDE_DIR}" )
-        MESSAGE( STATUS "\tLDFLAGS: ${SDLMIXER_LIBRARY}" )
-ELSE( SDLMIXER_FOUND )
-    SET( SDLMIXER_INCLUDE_DIR NOTFOUND )
-    SET( SDLMIXER_LIBRARY NOTFOUND )
-    MESSAGE( STATUS "SDL_mixer is required" )
-ENDIF(SDLMIXER_FOUND)
+FIND_PACKAGE(SDL2 REQUIRED)
+MESSAGE( STATUS "SDL2 has been found:" )
+MESSAGE( STATUS "\tCFLAGS : ${SDL2_INCLUDE_DIRS}" )
+MESSAGE( STATUS "\tLDFLAGS: ${SDL2_LIBRARIES}" )
 
-#######################
-# OpenGL
-#######################
-FIND_PACKAGE(OpenGL)
-IF(OPENGL_INCLUDE_DIR)
-    MESSAGE( STATUS "OpenGL has been found:" )
-    MESSAGE( STATUS "\tCFLAGS : ${OPENGL_INCLUDE_DIR}" )
-    MESSAGE( STATUS "\tLDFLAGS: ${OPENGL_LIBRARY}" )
-ELSE(OPENGL_INCLUDE_DIR)
-    SET( OPENGL_INCLUDE_DIR NOTFOUND )
-    SET( OPENGL_LIBRARY NOTFOUND )
-    MESSAGE( STATUS "OpenGL is required" )
-ENDIF(OPENGL_INCLUDE_DIR)
+##########################
+# SDL2_mixer (required)
+##########################
+FIND_PACKAGE(PkgConfig REQUIRED)
+PKG_CHECK_MODULES(SDL2_MIXER REQUIRED SDL2_mixer)
+MESSAGE( STATUS "SDL2_mixer has been found:" )
+MESSAGE( STATUS "\tCFLAGS : ${SDL2_MIXER_INCLUDE_DIRS}" )
+MESSAGE( STATUS "\tLDFLAGS: ${SDL2_MIXER_LIBRARIES}" )
+
+# OpenGL removed - using SDL2 renderer instead
 
 #######################
 # Lua
@@ -103,6 +80,9 @@ IF(SWIG_FOUND)
 ELSE(SWIG_FOUND)
     MESSAGE( STATUS "SWIG is required" )
 ENDIF(SWIG_FOUND)
+
+# Always using SDL2 now
+ADD_DEFINITIONS(-DUSE_SDL2)
 
 # Continue for subdirectories.
 ADD_SUBDIRECTORY(src)

@@ -77,12 +77,12 @@
 #include "../sketch/SketchElementRenderer.h"
 #include "../sketch/SketchManager.h"
 #include "../video/Color.h"
-#include "../video/ListManager.h"
 #include "../video/FPSLogger.h"
 #include "../video/Renderer.h"
-#include "../video/SketchyRenderer.h"
 #include "../video/DataRenderer.h"
 #include "../video/VideoManager.h"
+#include "../video/ListManager.h"
+#include "../video/SketchyRenderer.h"
 using namespace jvgs::audio;
 using namespace jvgs::bind;
 using namespace jvgs::math;
@@ -169,12 +169,13 @@ using namespace jvgs;
 %include "../sketch/SketchElementRenderer.h"
 %include "../sketch/SketchManager.h"
 %include "../video/Color.h"
-%include "../video/ListManager.h"
 %include "../video/FPSLogger.h"
 %include "../video/Renderer.h"
-%include "../video/SketchyRenderer.h"
 %include "../video/DataRenderer.h"
 %include "../video/VideoManager.h"
+%include "../video/ListManager.h"
+%include "../video/SketchyRenderer.h"
+
 using namespace jvgs::audio;
 using namespace jvgs::bind;
 using namespace jvgs::math;

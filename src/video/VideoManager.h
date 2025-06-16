@@ -5,7 +5,8 @@
 #include "../math/AffineTransformationMatrix.h"
 #include "../math/Vector2D.h"
 #include <string>
-#include <SDL/SDL.h>
+#include <stack>
+#include <SDL2/SDL.h>
 
 namespace jvgs
 {
@@ -15,21 +16,18 @@ namespace jvgs
 
         /** A singleton class that manages video information.
          *  It also allows you to set video options. To draw,
-         *  use a Renderer class.
+         *  use a Renderer class. Now uses SDL2 instead of OpenGL.
          */
         class VideoManager
         {
             private:
-                /* Video flags used. */
-                Uint32 flags;
-
-                /* Video dimensions. */
+                // SDL2 implementation data
+                SDL_Window* window;
+                SDL_Renderer* renderer;
+                std::stack<math::AffineTransformationMatrix> matrixStack;
+                math::AffineTransformationMatrix currentMatrix;
                 math::Vector2D size;
-
-                /* Drawing color. */
                 Color color;
-
-                /* Clearing color. */
                 Color clearColor;
 
             protected:
@@ -37,7 +35,7 @@ namespace jvgs
                  */
                 VideoManager();
 
-                /** Desturctor.
+                /** Destructor.
                  */
                 ~VideoManager();
 
@@ -60,14 +58,12 @@ namespace jvgs
 
                 /** Sets a windowed video mode with the given dimensions.
                  *  \param size The screen size.
-                 *  \param title Title to be fed to the window manager.
                  */
                 void setVideoMode(const math::Vector2D &size);
 
                 /** Sets a number of (good!) default flags. This includes
-                 *  blending mode, textures enabled, the correct projection
-                 *  matrix, the identity modelview matrix... for the full
-                 *  list, well, see the source code.
+                 *  blending mode, the correct projection
+                 *  matrix, the identity modelview matrix...
                  */
                 void setVideoDefaults();
 
@@ -86,36 +82,35 @@ namespace jvgs
 
                 /** Restores the identity matrix.
                  */
-                void identity() const;
+                void identity();
 
                 /** Pushes the current matrix onto the stack.
                  */
-                void push() const;
+                void push();
 
                 /** Pops the previous matrix from the stack.
                  */
-                void pop() const;
+                void pop();
 
                 /** Translates the current matrix.
                  *  @param vector Vector to translate over.
                  */
-                void translate(const math::Vector2D &vector) const;
+                void translate(const math::Vector2D &vector);
 
                 /** Scales the current matrix.
                  *  @param scale Vector to be used as scale.
                  */
-                void scale(const math::Vector2D &scale) const;
+                void scale(const math::Vector2D &scale);
 
                 /** Rotates the current matrix.
                  *  @param degrees Rotation degrees.
                  */
-                void rotate(const float &degrees) const;
+                void rotate(const float &degrees);
 
-                /** Tranforms with a tranformation matrix.
-                 *  @param matrix The tranformation matrix.
+                /** Transforms with a transformation matrix.
+                 *  @param matrix The transformation matrix.
                  */
-                void transform(const math::AffineTransformationMatrix &matrix)
-                        const;
+                void transform(const math::AffineTransformationMatrix &matrix);
 
                 /** Select a color for drawing.
                  *  @param color Color to be used.
@@ -140,8 +135,12 @@ namespace jvgs
                 /** Swaps drawing and clearing color.
                  */
                 virtual void invert();
+
+                // SDL2-specific methods
+                SDL_Renderer* getSDLRenderer() const;
+                const math::AffineTransformationMatrix& getCurrentMatrix() const;
         };
-    };
-};
+    }
+}
 
 #endif

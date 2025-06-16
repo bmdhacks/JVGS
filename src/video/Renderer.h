@@ -2,25 +2,22 @@
 #define JVGS_VIDEO_RENDERER_H
 
 #include "../math/Vector2D.h"
-#include <SDL/SDL_opengl.h>
 #include <vector>
 
 namespace jvgs
 {
     namespace video
     {
-        class VideoManager;
-
         /** Types of primives that can be rendered.
          */
         enum RenderType
         {
-            RENDERTYPE_LINES = GL_LINES,
-            RENDERTYPE_LINE_STRIP = GL_LINE_STRIP,
-            RENDERTYPE_LINE_LOOP = GL_LINE_LOOP,
-            RENDERTYPE_QUADS = GL_QUADS,
-            RENDERTYPE_POLYGON = GL_POLYGON,
-            RENDERTYPE_CONCAVE_POLYGON
+            RENDERTYPE_LINES = 1,
+            RENDERTYPE_LINE_STRIP = 2,
+            RENDERTYPE_LINE_LOOP = 3,
+            RENDERTYPE_QUADS = 4,
+            RENDERTYPE_POLYGON = 5,
+            RENDERTYPE_CONCAVE_POLYGON = 6
         };
 
         /** A class to draw primitives fast.

@@ -82,7 +82,11 @@ namespace jvgs
 
         void Path::render() const
         {
-            ListManager::getInstance()->callList(list);
+            // Use live SketchyRenderer instead of broken display lists
+            SketchyRenderer renderer;
+            for(int i = 0; i < getNumberOfComponents(); i++) {
+                getComponent(i)->render(&renderer);
+            }
         }
 
         void Path::render(Renderer *renderer)

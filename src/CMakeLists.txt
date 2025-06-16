@@ -1,10 +1,10 @@
 SET( CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -DTIXML_USE_STL" )
 
 INCLUDE_DIRECTORIES(
-    ${SDL_INCLUDE_DIR}
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2_MIXER_INCLUDE_DIRS}
     ${LUA_INCLUDE_DIR}
     ${FREETYPE_INCLUDE_DIRS}
-    ${SDLMIXER_INCLUDE_DIR}
     ${ZLIB_INCLUDE_DIRS}
 )
 
@@ -25,5 +25,21 @@ ADD_EXECUTABLE(
 )
 
 TARGET_LINK_LIBRARIES(
-    jvgs bind input
+    jvgs 
+    bind 
+    input 
+    core 
+    game 
+    math 
+    tinyxml 
+    video 
+    audio 
+    sketch 
+    font 
+    effect
+    ${SDL2_LIBRARIES}
+    ${SDL2_MIXER_LIBRARIES}
+    ${LUA_LIBRARIES}
+    ${FREETYPE_LIBRARIES}
+    ${ZLIB_LIBRARIES}
 )

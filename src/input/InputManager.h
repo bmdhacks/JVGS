@@ -2,7 +2,11 @@
 #define JVGS_INPUT_INPUTMANAGER_H
 
 #include <vector>
-#include <SDL.h>
+#ifdef USE_SDL2
+    #include <SDL2/SDL.h>
+#else
+    #include <SDL.h>
+#endif
 #include "Key.h"
 
 namespace jvgs
@@ -17,7 +21,11 @@ namespace jvgs
         {
             private:
                 /** Key state. */
+#ifdef USE_SDL2
+                const Uint8 *keyState;
+#else
                 Uint8 *keyState;
+#endif
 
                 /** Received a quit event. */
                 bool quitEvent;

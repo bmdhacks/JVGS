@@ -1,6 +1,6 @@
 ADD_CUSTOM_TARGET(
      swig
-     ${SWIG_EXECUTABLE} -lua -c++ -o ${JVGS_BINARY_DIR}/src/bind/jvgslua.cpp ${JVGS_BINARY_DIR}/src/bind/jvgslua.i
+     ${SWIG_EXECUTABLE} -lua -c++ -DUSE_SDL2 -o ${JVGS_BINARY_DIR}/src/bind/jvgslua.cpp ${JVGS_BINARY_DIR}/src/bind/jvgslua.i
 )
 
 ADD_LIBRARY(

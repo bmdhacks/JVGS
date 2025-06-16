@@ -1,11 +1,10 @@
 #include "VideoManager.h"
 #include "Renderer.h"
 
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include <SDL2/SDL.h>
+#include <stack>
 
 using namespace jvgs::math;
-
 using namespace std;
 
 namespace jvgs
@@ -15,11 +14,20 @@ namespace jvgs
         VideoManager::VideoManager()
         {
             SDL_InitSubSystem(SDL_INIT_VIDEO);
-            flags = SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_HWACCEL | SDL_OPENGL;
+            window = nullptr;
+            renderer = nullptr;
         }
 
         VideoManager::~VideoManager()
         {
+            if (renderer) {
+                SDL_DestroyRenderer(renderer);
+                renderer = nullptr;
+            }
+            if (window) {
+                SDL_DestroyWindow(window);
+                window = nullptr;
+            }
             SDL_QuitSubSystem(SDL_INIT_VIDEO);
         }
 
@@ -29,67 +37,45 @@ namespace jvgs
             return &instance;
         }
 
-        void VideoManager::setVideoMode(std::string title)
+        void VideoManager::setVideoMode(string title)
         {
-            SDL_Rect **modes = SDL_ListModes(NULL, flags | SDL_FULLSCREEN);
-
-            /* Auto-select video mode. */
-            size = Vector2D(800, 600);
-            if(modes!=NULL) {
-                size = Vector2D(modes[0]->w, modes[0]->h);
-            }
-
-            SDL_SetVideoMode((int) size.getX(), (int) size.getY(), 0,
-                    flags | SDL_FULLSCREEN);
-            SDL_ShowCursor(0);
-            SDL_WM_SetCaption(title.c_str(), NULL);
-
-            setVideoDefaults();
+            setVideoMode(Vector2D(800, 600), title);
         }
 
-        void VideoManager::setVideoMode(const Vector2D &size,
-                                        std::string title)
+        void VideoManager::setVideoMode(const Vector2D &newSize, string title)
         {
-            SDL_WM_SetCaption(title.c_str(), NULL);
-            setVideoMode(size);
-        }
-
-        void VideoManager::setVideoMode(const Vector2D &size)
-        {
-            this->size = Vector2D((float)(int) size.getX(),
-                    (float)(int) size.getY());
-
-            SDL_SetVideoMode((int) size.getX(), (int) size.getY(), 0, flags);
-            SDL_ShowCursor(0);
+            size = newSize;
             
+            if (window) {
+                SDL_DestroyWindow(window);
+            }
+            if (renderer) {
+                SDL_DestroyRenderer(renderer);
+            }
+            
+            window = SDL_CreateWindow(title.c_str(),
+                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                (int)size.getX(), (int)size.getY(),
+                SDL_WINDOW_SHOWN);
+                
+            renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+                
             setVideoDefaults();
+        }
+
+        void VideoManager::setVideoMode(const Vector2D &newSize)
+        {
+            setVideoMode(newSize, "JVGS");
         }
 
         void VideoManager::setVideoDefaults()
         {
-            glViewport(0, 0, (GLsizei) size.getX(), (GLsizei) size.getY());
-
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            glOrtho(0.0f, (GLfloat) size.getX(), (GLfloat) size.getY(), 
-                    0.0f, -1.0f, 1.0f);
-
-            glMatrixMode(GL_MODELVIEW);
-            glLoadIdentity();
-
-            glEnable(GL_TEXTURE_2D);
-            glBindTexture(GL_TEXTURE_2D, 0);
-
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-            glEnable(GL_LINE_SMOOTH);
-            glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-
-            setClearColor(Color(1.0f, 1.0f, 1.0f));
-            setColor(Color(0.0f, 0.0f, 0.0f));
-
-            glLineWidth(1.5f);
+            if (renderer) {
+                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+            }
+            identity();
+            setColor(Color(0.0f, 0.0f, 0.0f, 1.0f));        // Black lines
+            setClearColor(Color(1.0f, 1.0f, 1.0f, 1.0f));   // White background
         }
 
         const Vector2D &VideoManager::getSize() const
@@ -99,88 +85,64 @@ namespace jvgs
 
         void VideoManager::clear() const
         {
-            glClear(GL_COLOR_BUFFER_BIT);
+            if (renderer) {
+                SDL_SetRenderDrawColor(renderer, 
+                    (Uint8)(clearColor.getRed() * 255),
+                    (Uint8)(clearColor.getGreen() * 255),
+                    (Uint8)(clearColor.getBlue() * 255),
+                    (Uint8)(clearColor.getAlpha() * 255));
+                SDL_RenderClear(renderer);
+            }
         }
 
         void VideoManager::flip() const
         {
-            SDL_GL_SwapBuffers();
+            if (renderer) {
+                SDL_RenderPresent(renderer);
+            }
         }
 
-        void VideoManager::identity() const
+        void VideoManager::identity()
         {
-            glLoadIdentity();
+            currentMatrix = AffineTransformationMatrix();
         }
 
-        void VideoManager::push() const
+        void VideoManager::push()
         {
-            glPushMatrix();
+            matrixStack.push(currentMatrix);
         }
 
-        void VideoManager::pop() const
+        void VideoManager::pop()
         {
-            glPopMatrix();
+            if (!matrixStack.empty()) {
+                currentMatrix = matrixStack.top();
+                matrixStack.pop();
+            }
         }
 
-        void VideoManager::translate(const Vector2D &vector) const
+        void VideoManager::translate(const Vector2D &vector)
         {
-            glTranslatef(vector.getX(), vector.getY(), 0.0f);
+            currentMatrix.translate(vector);
         }
 
-        void VideoManager::scale(const Vector2D &scale) const
+        void VideoManager::scale(const Vector2D &scale)
         {
-            glScalef(scale.getX(), scale.getY(), 1.0f);
+            currentMatrix.scale(scale);
         }
 
-        void VideoManager::rotate(const float &degrees) const
+        void VideoManager::rotate(const float &degrees)
         {
-            glRotatef(degrees, 0.0f, 0.0f, 1.0f);
+            currentMatrix.rotate(degrees);
         }
 
         void VideoManager::transform(const AffineTransformationMatrix &matrix)
-                const
         {
-            float *glMatrix = new float[16];
-
-            /* Our AffineTransformationMatrix
-             *     / a b c \
-             *     | d e f |
-             *     \ 0 0 1 /
-             * becomes a matrix we can use with OpenGL:
-             *     / a b 0 c \
-             *     | d e 0 f |
-             *     | 0 0 1 0 |
-             *     \ 0 0 0 1 /
-             */
-
-            /* Intialize to 0. */
-            for(int i = 0; i < 16; i++)
-                glMatrix[i] = 0.0f;
-            
-            for(int row = 0; row < matrix.getHeight(); row++) {
-                for(int column = 0; column < matrix.getWidth(); column++) {
-                    if(column < 2 && row < 2) {
-                        glMatrix[column * 4 + row] =
-                                matrix.getValue(row, column);
-                    }
-                }
-            }
-
-            glMatrix[2 * 4 + 2] = 1.0f;
-            glMatrix[3 * 4 + 3] = 1.0f;
-
-            glMatrix[3 * 4 + 0] = matrix.getValue(0, 2);
-            glMatrix[3 * 4 + 1] = matrix.getValue(1, 2);
-
-            glMultMatrixf(glMatrix);
-            delete[] glMatrix;
+            currentMatrix *= matrix;
         }
 
-        void VideoManager::setColor(const Color &color)
+        void VideoManager::setColor(const Color &newColor)
         {
-            this->color = color;
-            glColor4f(color.getRed(), color.getGreen(),
-                      color.getBlue(), color.getAlpha());
+            color = newColor;
         }
 
         const Color &VideoManager::getColor() const
@@ -188,11 +150,9 @@ namespace jvgs
             return color;
         }
 
-        void VideoManager::setClearColor(const Color &clearColor)
+        void VideoManager::setClearColor(const Color &newClearColor)
         {
-            this->clearColor = clearColor;
-            glClearColor(clearColor.getRed(), clearColor.getGreen(),
-                         clearColor.getBlue(), clearColor.getAlpha());
+            clearColor = newClearColor;
         }
 
         const Color &VideoManager::getClearColor() const
@@ -206,5 +166,16 @@ namespace jvgs
             setColor(clearColor);
             setClearColor(tmp);
         }
-    };
-};
+        
+        // SDL2-specific methods that other parts need
+        SDL_Renderer* VideoManager::getSDLRenderer() const
+        {
+            return renderer;
+        }
+        
+        const AffineTransformationMatrix& VideoManager::getCurrentMatrix() const
+        {
+            return currentMatrix;
+        }
+    }
+}

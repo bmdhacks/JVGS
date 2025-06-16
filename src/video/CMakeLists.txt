@@ -1,24 +1,21 @@
-# Set up include directories.
+# SDL2-only build
 INCLUDE_DIRECTORIES(
-    ${SDL_INCLUDE_DIR}
-    ${OPENGL_INCLUDE_DIR}
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2_MIXER_INCLUDE_DIRS}
 )
-
-ADD_LIBRARY( 
-    video STATIC 
+SET(VIDEO_SOURCES
     Color.cpp
     DataRenderer.cpp
-    ListManager.cpp
     FPSLogger.cpp
     Renderer.cpp
-    SketchyRenderer.cpp
     VideoManager.cpp
+    SketchyRenderer.cpp
+)
+SET(VIDEO_LIBS
+    math
+    ${SDL2_LIBRARIES}
+    ${SDL2_MIXER_LIBRARIES}
 )
 
-# Link to the following libraries
-TARGET_LINK_LIBRARIES(
-    video
-    math
-    ${SDL_LIBRARY}
-    ${OPENGL_LIBRARIES}
-)
+ADD_LIBRARY(video STATIC ${VIDEO_SOURCES})
+TARGET_LINK_LIBRARIES(video ${VIDEO_LIBS})

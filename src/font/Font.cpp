@@ -107,7 +107,7 @@ namespace jvgs
         {
             VideoManager::getInstance()->push();
             ListManager *listManager = ListManager::getInstance();
-            listManager->callLists(base, (GLubyte*) string.c_str(),
+            listManager->callLists(base, (unsigned char*) string.c_str(),
                     (int) string.size());
             VideoManager::getInstance()->pop();
         }

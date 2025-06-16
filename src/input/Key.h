@@ -1,7 +1,11 @@
 #ifndef JVGS_INPUT_KEY_H
 #define JVGS_INPUT_KEY_H
 
-#include <SDL.h>
+#ifdef USE_SDL2
+    #include <SDL2/SDL.h>
+#else
+    #include <SDL.h>
+#endif
 
 namespace jvgs
 {
@@ -12,7 +16,11 @@ namespace jvgs
         enum Key
         {
             KEY_UNKNOWN = SDLK_UNKNOWN,
+#ifdef USE_SDL2
+            KEY_FIRST = SDLK_UNKNOWN, // SDL2 doesn't have SDLK_FIRST
+#else
             KEY_FIRST = SDLK_FIRST,
+#endif
             KEY_BACKSPACE = SDLK_BACKSPACE,
             KEY_TAB = SDLK_TAB,
             KEY_CLEAR = SDLK_CLEAR,
@@ -84,6 +92,8 @@ namespace jvgs
             KEY_y = SDLK_y,
             KEY_z = SDLK_z,
             KEY_DELETE = SDLK_DELETE,
+#ifndef USE_SDL2
+            // SDL2 doesn't have WORLD keys
             KEY_WORLD_0 = SDLK_WORLD_0,
             KEY_WORLD_1 = SDLK_WORLD_1,
             KEY_WORLD_2 = SDLK_WORLD_2,
@@ -180,6 +190,19 @@ namespace jvgs
             KEY_WORLD_93 = SDLK_WORLD_93,
             KEY_WORLD_94 = SDLK_WORLD_94,
             KEY_WORLD_95 = SDLK_WORLD_95,
+#endif // USE_SDL2
+#ifdef USE_SDL2
+            KEY_KP0 = SDLK_KP_0,
+            KEY_KP1 = SDLK_KP_1,
+            KEY_KP2 = SDLK_KP_2,
+            KEY_KP3 = SDLK_KP_3,
+            KEY_KP4 = SDLK_KP_4,
+            KEY_KP5 = SDLK_KP_5,
+            KEY_KP6 = SDLK_KP_6,
+            KEY_KP7 = SDLK_KP_7,
+            KEY_KP8 = SDLK_KP_8,
+            KEY_KP9 = SDLK_KP_9,
+#else
             KEY_KP0 = SDLK_KP0,
             KEY_KP1 = SDLK_KP1,
             KEY_KP2 = SDLK_KP2,
@@ -190,6 +213,7 @@ namespace jvgs
             KEY_KP7 = SDLK_KP7,
             KEY_KP8 = SDLK_KP8,
             KEY_KP9 = SDLK_KP9,
+#endif
             KEY_KP_PERIOD = SDLK_KP_PERIOD,
             KEY_KP_DIVIDE = SDLK_KP_DIVIDE,
             KEY_KP_MULTIPLY = SDLK_KP_MULTIPLY,
@@ -221,22 +245,49 @@ namespace jvgs
             KEY_F13 = SDLK_F13,
             KEY_F14 = SDLK_F14,
             KEY_F15 = SDLK_F15,
+#ifdef USE_SDL2
+            KEY_NUMLOCK = SDLK_NUMLOCKCLEAR,
+#else
             KEY_NUMLOCK = SDLK_NUMLOCK,
+#endif
             KEY_CAPSLOCK = SDLK_CAPSLOCK,
+#ifdef USE_SDL2  
+            KEY_SCROLLOCK = SDLK_SCROLLLOCK,
+#else
             KEY_SCROLLOCK = SDLK_SCROLLOCK,
+#endif
             KEY_RSHIFT = SDLK_RSHIFT,
             KEY_LSHIFT = SDLK_LSHIFT,
             KEY_RCTRL = SDLK_RCTRL,
             KEY_LCTRL = SDLK_LCTRL,
             KEY_RALT = SDLK_RALT,
             KEY_LALT = SDLK_LALT,
+#ifdef USE_SDL2
+            KEY_RMETA = SDLK_RGUI,  // SDL2 uses GUI instead of META
+            KEY_LMETA = SDLK_LGUI,
+            KEY_LSUPER = SDLK_LGUI, // SDL2 uses GUI
+            KEY_RSUPER = SDLK_RGUI,
+            KEY_MODE = SDLK_MODE,
+            KEY_COMPOSE = SDLK_APPLICATION,  // Closest equivalent in SDL2
+#else
             KEY_RMETA = SDLK_RMETA,
             KEY_LMETA = SDLK_LMETA,
             KEY_LSUPER = SDLK_LSUPER,
             KEY_RSUPER = SDLK_RSUPER,
             KEY_MODE = SDLK_MODE,
             KEY_COMPOSE = SDLK_COMPOSE,
+#endif
             KEY_HELP = SDLK_HELP,
+#ifdef USE_SDL2
+            KEY_PRINT = SDLK_PRINTSCREEN,  // SDL2 uses PRINTSCREEN
+            KEY_SYSREQ = SDLK_SYSREQ,
+            KEY_BREAK = SDLK_PAUSE,  // SDL2 doesn't have BREAK, use PAUSE
+            KEY_MENU = SDLK_MENU,
+            KEY_POWER = SDLK_POWER,
+            KEY_EURO = SDLK_UNKNOWN,  // SDL2 doesn't have EURO, use UNKNOWN
+            KEY_UNDO = SDLK_UNDO,
+            KEY_LAST = 512  // Reasonable upper bound for key array allocation
+#else
             KEY_PRINT = SDLK_PRINT,
             KEY_SYSREQ = SDLK_SYSREQ,
             KEY_BREAK = SDLK_BREAK,
@@ -245,6 +296,7 @@ namespace jvgs
             KEY_EURO = SDLK_EURO,
             KEY_UNDO = SDLK_UNDO,
             KEY_LAST = SDLK_LAST
+#endif
         };
     }
 }
