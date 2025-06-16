@@ -1,0 +1,47 @@
+# Build directories
+build/
+Build/
+BUILD/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+*.cmake
+install_manifest.txt
+
+# Build outputs
+*.a
+*.so
+*.o
+*.lo
+*.obj
+*.exe
+*.dll
+*.dylib
+
+# Generated SWIG files
+src/bind/jvgslua.cpp
+
+# Binaries
+src/jvgs
+jvgs
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Development
+*.log
+*.tmp
+.cache/
+.claude
+CLAUDE.md
+
+# Configuration files (user-specific)
+.jvgs.xml
