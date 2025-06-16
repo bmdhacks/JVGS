@@ -7,6 +7,7 @@ SET(VIDEO_SOURCES
     Color.cpp
     DataRenderer.cpp
     FPSLogger.cpp
+    ListManager.cpp
     Renderer.cpp
     VideoManager.cpp
     SketchyRenderer.cpp

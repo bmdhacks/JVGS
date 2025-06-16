@@ -1,5 +1,6 @@
 #include "SketchyRenderer.h"
 #include "VideoManager.h"
+#include "ListManager.h"
 #include "../math/MathManager.h"
 #include <cstdlib>
 
@@ -34,27 +35,14 @@ namespace jvgs
             Renderer::end();
 
             VideoManager* vm = VideoManager::getInstance();
-            SDL_Renderer* renderer = vm->getSDLRenderer();
+            ListManager* lm = ListManager::getInstance();
             
-            if (!renderer) {
-                return;
-            }
             if (vectorList.empty()) {
                 return;
             }
-            
-
 
             Color color = vm->getColor();
-            SDL_SetRenderDrawColor(renderer,
-                (Uint8)(color.getRed() * 255),
-                (Uint8)(color.getGreen() * 255),
-                (Uint8)(color.getBlue() * 255),
-                (Uint8)(color.getAlpha() * 255));
-
-            // Apply current transformation matrix to all vectors
-            const AffineTransformationMatrix& matrix = vm->getCurrentMatrix();
-
+            
             int repeat = MathManager::getInstance()->randInt(1, 10);
             int start = 0, end = (int) vectorList.size();
             while(repeat > 0) {
@@ -63,16 +51,31 @@ namespace jvgs
                     Vector2D v1 = vectorList[i];
                     Vector2D v2 = vectorList[i + 1];
                     
-                    // Transform vectors using current matrix
-                    v1 = matrix * v1;
-                    v2 = matrix * v2;
-                    
                     float x1 = v1.getX() + noiseX->nextValue();
                     float y1 = v1.getY() + noiseY->nextValue();
                     float x2 = v2.getX() + noiseX->nextValue();
                     float y2 = v2.getY() + noiseY->nextValue();
                     
-                    SDL_RenderDrawLineF(renderer, x1, y1, x2, y2);
+                    // Record line if we're recording a display list, otherwise draw directly
+                    if (lm->getIsRecording()) {
+                        // Store raw coordinates - transformation applied during callList
+                        lm->recordLine(x1, y1, x2, y2, color);
+                    } else {
+                        // Apply current transformation matrix for direct rendering
+                        const AffineTransformationMatrix& matrix = vm->getCurrentMatrix();
+                        Vector2D tv1 = matrix * Vector2D(x1, y1);
+                        Vector2D tv2 = matrix * Vector2D(x2, y2);
+                        
+                        SDL_Renderer* renderer = vm->getSDLRenderer();
+                        if (renderer) {
+                            SDL_SetRenderDrawColor(renderer,
+                                (Uint8)(color.getRed() * 255),
+                                (Uint8)(color.getGreen() * 255),
+                                (Uint8)(color.getBlue() * 255),
+                                (Uint8)(color.getAlpha() * 255));
+                            SDL_RenderDrawLineF(renderer, tv1.getX(), tv1.getY(), tv2.getX(), tv2.getY());
+                        }
+                    }
                 }
 
                 start = MathManager::getInstance()->randInt(0,

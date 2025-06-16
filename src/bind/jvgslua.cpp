@@ -2800,20 +2800,25 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 #define SWIGTYPE_p_jvgs__sketch__SketchElement swig_types[72]
 #define SWIGTYPE_p_jvgs__sketch__SketchElementRenderer swig_types[73]
 #define SWIGTYPE_p_jvgs__sketch__SketchManager swig_types[74]
-#define SWIGTYPE_p_jvgs__video__Color swig_types[75]
-#define SWIGTYPE_p_jvgs__video__DataRenderer swig_types[76]
-#define SWIGTYPE_p_jvgs__video__FPSLogger swig_types[77]
-#define SWIGTYPE_p_jvgs__video__ListManager swig_types[78]
-#define SWIGTYPE_p_jvgs__video__Renderer swig_types[79]
-#define SWIGTYPE_p_jvgs__video__SketchyRenderer swig_types[80]
-#define SWIGTYPE_p_jvgs__video__VideoManager swig_types[81]
-#define SWIGTYPE_p_p_char swig_types[82]
-#define SWIGTYPE_p_std__string swig_types[83]
-#define SWIGTYPE_p_std__vectorT_jvgs__math__BoundedObject_p_t swig_types[84]
-#define SWIGTYPE_p_std__vectorT_jvgs__math__Vector2D_t swig_types[85]
-#define SWIGTYPE_p_unsigned_char swig_types[86]
-static swig_type_info *swig_types[88];
-static swig_module_info swig_module = {swig_types, 87, 0, 0, 0, 0};
+#define SWIGTYPE_p_jvgs__video__CachedLine swig_types[75]
+#define SWIGTYPE_p_jvgs__video__CachedTransform swig_types[76]
+#define SWIGTYPE_p_jvgs__video__Color swig_types[77]
+#define SWIGTYPE_p_jvgs__video__DataRenderer swig_types[78]
+#define SWIGTYPE_p_jvgs__video__DisplayList swig_types[79]
+#define SWIGTYPE_p_jvgs__video__DisplayListOp swig_types[80]
+#define SWIGTYPE_p_jvgs__video__FPSLogger swig_types[81]
+#define SWIGTYPE_p_jvgs__video__ListManager swig_types[82]
+#define SWIGTYPE_p_jvgs__video__Renderer swig_types[83]
+#define SWIGTYPE_p_jvgs__video__SketchyRenderer swig_types[84]
+#define SWIGTYPE_p_jvgs__video__VideoManager swig_types[85]
+#define SWIGTYPE_p_p_char swig_types[86]
+#define SWIGTYPE_p_std__string swig_types[87]
+#define SWIGTYPE_p_std__vectorT_jvgs__math__BoundedObject_p_t swig_types[88]
+#define SWIGTYPE_p_std__vectorT_jvgs__math__Vector2D_t swig_types[89]
+#define SWIGTYPE_p_std__vectorT_jvgs__video__DisplayListOp_t swig_types[90]
+#define SWIGTYPE_p_unsigned_char swig_types[91]
+static swig_type_info *swig_types[93];
+static swig_module_info swig_module = {swig_types, 92, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -21129,6 +21134,809 @@ static swig_lua_class *swig_VideoManager_bases[] = {0};
 static const char *swig_VideoManager_base_names[] = {0};
 static swig_lua_class _wrap_class_VideoManager = { "VideoManager", "VideoManager", &SWIGTYPE_p_jvgs__video__VideoManager,0,0, swig_VideoManager_methods, swig_VideoManager_attributes, &swig_VideoManager_Sf_SwigStatic, swig_VideoManager_meta, swig_VideoManager_bases, swig_VideoManager_base_names };
 
+static int _wrap_CachedLine_x1_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float arg2 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::x1",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::x1",1,"jvgs::video::CachedLine *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::x1",2,"float");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_x1_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    arg2 = (float)lua_tonumber(L, 2);
+    if (arg1) (arg1)->x1 = arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_x1_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float result;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::x1",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::x1",1,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_x1_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    result = (float) ((arg1)->x1);
+    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_y1_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float arg2 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::y1",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::y1",1,"jvgs::video::CachedLine *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::y1",2,"float");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_y1_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    arg2 = (float)lua_tonumber(L, 2);
+    if (arg1) (arg1)->y1 = arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_y1_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float result;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::y1",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::y1",1,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_y1_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    result = (float) ((arg1)->y1);
+    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_x2_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float arg2 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::x2",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::x2",1,"jvgs::video::CachedLine *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::x2",2,"float");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_x2_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    arg2 = (float)lua_tonumber(L, 2);
+    if (arg1) (arg1)->x2 = arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_x2_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float result;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::x2",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::x2",1,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_x2_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    result = (float) ((arg1)->x2);
+    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_y2_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float arg2 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::y2",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::y2",1,"jvgs::video::CachedLine *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::y2",2,"float");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_y2_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    arg2 = (float)lua_tonumber(L, 2);
+    if (arg1) (arg1)->y2 = arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_y2_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    float result;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::y2",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::y2",1,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_y2_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    result = (float) ((arg1)->y2);
+    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_color_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    jvgs::video::Color *arg2 = (jvgs::video::Color *) 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::color",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::color",1,"jvgs::video::CachedLine *");
+    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::color",2,"jvgs::video::Color *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_color_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__video__Color,0))){
+      SWIG_fail_ptr("CachedLine_color_set",2,SWIGTYPE_p_jvgs__video__Color);
+    }
+    
+    if (arg1) (arg1)->color = *arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedLine_color_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
+    jvgs::video::Color *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::color",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::color",1,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("CachedLine_color_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    result = (jvgs::video::Color *)& ((arg1)->color);
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__Color,0); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_new_CachedLine(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedLine *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedLine::CachedLine",0,0)
+    result = (jvgs::video::CachedLine *)new jvgs::video::CachedLine();
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__CachedLine,1); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static void swig_delete_CachedLine(void *obj) {
+jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_CachedLine(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_CachedLine);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_CachedLine_attributes[] = {
+    { "x1", _wrap_CachedLine_x1_get, _wrap_CachedLine_x1_set },
+    { "y1", _wrap_CachedLine_y1_get, _wrap_CachedLine_y1_set },
+    { "x2", _wrap_CachedLine_x2_get, _wrap_CachedLine_x2_set },
+    { "y2", _wrap_CachedLine_y2_get, _wrap_CachedLine_y2_set },
+    { "color", _wrap_CachedLine_color_get, _wrap_CachedLine_color_set },
+    {0,0,0}
+};
+static swig_lua_method swig_CachedLine_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_CachedLine_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_CachedLine_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_CachedLine_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_CachedLine_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_CachedLine_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_CachedLine_Sf_SwigStatic = {
+    "CachedLine",
+    swig_CachedLine_Sf_SwigStatic_methods,
+    swig_CachedLine_Sf_SwigStatic_attributes,
+    swig_CachedLine_Sf_SwigStatic_constants,
+    swig_CachedLine_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_CachedLine_bases[] = {0};
+static const char *swig_CachedLine_base_names[] = {0};
+static swig_lua_class _wrap_class_CachedLine = { "CachedLine", "CachedLine", &SWIGTYPE_p_jvgs__video__CachedLine,_proxy__wrap_new_CachedLine, swig_delete_CachedLine, swig_CachedLine_methods, swig_CachedLine_attributes, &swig_CachedLine_Sf_SwigStatic, swig_CachedLine_meta, swig_CachedLine_bases, swig_CachedLine_base_names };
+
+static int _wrap_CachedTransform_translation_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedTransform *arg1 = (jvgs::video::CachedTransform *) 0 ;
+    jvgs::math::Vector2D *arg2 = (jvgs::math::Vector2D *) 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedTransform::translation",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedTransform::translation",1,"jvgs::video::CachedTransform *");
+    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::CachedTransform::translation",2,"jvgs::math::Vector2D *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedTransform,0))){
+      SWIG_fail_ptr("CachedTransform_translation_set",1,SWIGTYPE_p_jvgs__video__CachedTransform);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__math__Vector2D,0))){
+      SWIG_fail_ptr("CachedTransform_translation_set",2,SWIGTYPE_p_jvgs__math__Vector2D);
+    }
+    
+    if (arg1) (arg1)->translation = *arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_CachedTransform_translation_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedTransform *arg1 = (jvgs::video::CachedTransform *) 0 ;
+    jvgs::math::Vector2D *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedTransform::translation",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedTransform::translation",1,"jvgs::video::CachedTransform *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedTransform,0))){
+      SWIG_fail_ptr("CachedTransform_translation_get",1,SWIGTYPE_p_jvgs__video__CachedTransform);
+    }
+    
+    result = (jvgs::math::Vector2D *)& ((arg1)->translation);
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__math__Vector2D,0); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_new_CachedTransform(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::CachedTransform *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::CachedTransform::CachedTransform",0,0)
+    result = (jvgs::video::CachedTransform *)new jvgs::video::CachedTransform();
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__CachedTransform,1); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static void swig_delete_CachedTransform(void *obj) {
+jvgs::video::CachedTransform *arg1 = (jvgs::video::CachedTransform *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_CachedTransform(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_CachedTransform);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_CachedTransform_attributes[] = {
+    { "translation", _wrap_CachedTransform_translation_get, _wrap_CachedTransform_translation_set },
+    {0,0,0}
+};
+static swig_lua_method swig_CachedTransform_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_CachedTransform_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_CachedTransform_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_CachedTransform_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_CachedTransform_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_CachedTransform_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_CachedTransform_Sf_SwigStatic = {
+    "CachedTransform",
+    swig_CachedTransform_Sf_SwigStatic_methods,
+    swig_CachedTransform_Sf_SwigStatic_attributes,
+    swig_CachedTransform_Sf_SwigStatic_constants,
+    swig_CachedTransform_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_CachedTransform_bases[] = {0};
+static const char *swig_CachedTransform_base_names[] = {0};
+static swig_lua_class _wrap_class_CachedTransform = { "CachedTransform", "CachedTransform", &SWIGTYPE_p_jvgs__video__CachedTransform,_proxy__wrap_new_CachedTransform, swig_delete_CachedTransform, swig_CachedTransform_methods, swig_CachedTransform_attributes, &swig_CachedTransform_Sf_SwigStatic, swig_CachedTransform_meta, swig_CachedTransform_bases, swig_CachedTransform_base_names };
+
+static int _wrap_DisplayListOp_type_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::DisplayListOpType arg2 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::type",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::type",1,"jvgs::video::DisplayListOp *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::DisplayListOp::type",2,"jvgs::video::DisplayListOpType");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_type_set",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    arg2 = (jvgs::video::DisplayListOpType)(int)lua_tonumber(L, 2);
+    if (arg1) (arg1)->type = arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayListOp_type_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::DisplayListOpType result;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::type",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::type",1,"jvgs::video::DisplayListOp *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_type_get",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    result = (jvgs::video::DisplayListOpType) ((arg1)->type);
+    lua_pushnumber(L, (lua_Number)(int)(result)); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayListOp_line_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::CachedLine *arg2 = (jvgs::video::CachedLine *) 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::line",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::line",1,"jvgs::video::DisplayListOp *");
+    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::DisplayListOp::line",2,"jvgs::video::CachedLine *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_line_set",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__video__CachedLine,0))){
+      SWIG_fail_ptr("DisplayListOp_line_set",2,SWIGTYPE_p_jvgs__video__CachedLine);
+    }
+    
+    if (arg1) (arg1)->line = *arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayListOp_line_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::CachedLine *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::line",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::line",1,"jvgs::video::DisplayListOp *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_line_get",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    result = (jvgs::video::CachedLine *)& ((arg1)->line);
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__CachedLine,0); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayListOp_transform_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::CachedTransform *arg2 = (jvgs::video::CachedTransform *) 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::transform",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::transform",1,"jvgs::video::DisplayListOp *");
+    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::DisplayListOp::transform",2,"jvgs::video::CachedTransform *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_transform_set",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__video__CachedTransform,0))){
+      SWIG_fail_ptr("DisplayListOp_transform_set",2,SWIGTYPE_p_jvgs__video__CachedTransform);
+    }
+    
+    if (arg1) (arg1)->transform = *arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayListOp_transform_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) 0 ;
+    jvgs::video::CachedTransform *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::transform",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayListOp::transform",1,"jvgs::video::DisplayListOp *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayListOp,0))){
+      SWIG_fail_ptr("DisplayListOp_transform_get",1,SWIGTYPE_p_jvgs__video__DisplayListOp);
+    }
+    
+    result = (jvgs::video::CachedTransform *)& ((arg1)->transform);
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__CachedTransform,0); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_new_DisplayListOp(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayListOp *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayListOp::DisplayListOp",0,0)
+    result = (jvgs::video::DisplayListOp *)new jvgs::video::DisplayListOp();
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__DisplayListOp,1); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static void swig_delete_DisplayListOp(void *obj) {
+jvgs::video::DisplayListOp *arg1 = (jvgs::video::DisplayListOp *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_DisplayListOp(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_DisplayListOp);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_DisplayListOp_attributes[] = {
+    { "type", _wrap_DisplayListOp_type_get, _wrap_DisplayListOp_type_set },
+    { "line", _wrap_DisplayListOp_line_get, _wrap_DisplayListOp_line_set },
+    { "transform", _wrap_DisplayListOp_transform_get, _wrap_DisplayListOp_transform_set },
+    {0,0,0}
+};
+static swig_lua_method swig_DisplayListOp_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_DisplayListOp_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_DisplayListOp_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_DisplayListOp_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_DisplayListOp_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_DisplayListOp_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_DisplayListOp_SwigStatic = {
+    "DisplayListOp",
+    swig_DisplayListOp_SwigStatic_methods,
+    swig_DisplayListOp_SwigStatic_attributes,
+    swig_DisplayListOp_SwigStatic_constants,
+    swig_DisplayListOp_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_DisplayListOp_bases[] = {0};
+static const char *swig_DisplayListOp_base_names[] = {0};
+static swig_lua_class _wrap_class_DisplayListOp = { "DisplayListOp", "DisplayListOp", &SWIGTYPE_p_jvgs__video__DisplayListOp,_proxy__wrap_new_DisplayListOp, swig_delete_DisplayListOp, swig_DisplayListOp_methods, swig_DisplayListOp_attributes, &swig_DisplayListOp_SwigStatic, swig_DisplayListOp_meta, swig_DisplayListOp_bases, swig_DisplayListOp_base_names };
+
+static int _wrap_DisplayList_operations_set(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayList *arg1 = (jvgs::video::DisplayList *) 0 ;
+    std::vector< jvgs::video::DisplayListOp > *arg2 = (std::vector< jvgs::video::DisplayListOp > *) 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayList::operations",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayList::operations",1,"jvgs::video::DisplayList *");
+    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::DisplayList::operations",2,"std::vector< jvgs::video::DisplayListOp > *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayList,0))){
+      SWIG_fail_ptr("DisplayList_operations_set",1,SWIGTYPE_p_jvgs__video__DisplayList);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__vectorT_jvgs__video__DisplayListOp_t,0))){
+      SWIG_fail_ptr("DisplayList_operations_set",2,SWIGTYPE_p_std__vectorT_jvgs__video__DisplayListOp_t);
+    }
+    
+    if (arg1) (arg1)->operations = *arg2;
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_DisplayList_operations_get(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayList *arg1 = (jvgs::video::DisplayList *) 0 ;
+    std::vector< jvgs::video::DisplayListOp > *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayList::operations",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::DisplayList::operations",1,"jvgs::video::DisplayList *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__DisplayList,0))){
+      SWIG_fail_ptr("DisplayList_operations_get",1,SWIGTYPE_p_jvgs__video__DisplayList);
+    }
+    
+    result = (std::vector< jvgs::video::DisplayListOp > *)& ((arg1)->operations);
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__vectorT_jvgs__video__DisplayListOp_t,0); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_new_DisplayList(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::DisplayList *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::DisplayList::DisplayList",0,0)
+    result = (jvgs::video::DisplayList *)new jvgs::video::DisplayList();
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__DisplayList,1); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static void swig_delete_DisplayList(void *obj) {
+jvgs::video::DisplayList *arg1 = (jvgs::video::DisplayList *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_DisplayList(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_DisplayList);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_DisplayList_attributes[] = {
+    { "operations", _wrap_DisplayList_operations_get, _wrap_DisplayList_operations_set },
+    {0,0,0}
+};
+static swig_lua_method swig_DisplayList_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_DisplayList_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_DisplayList_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_DisplayList_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_DisplayList_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_DisplayList_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_DisplayList_Sf_SwigStatic = {
+    "DisplayList",
+    swig_DisplayList_Sf_SwigStatic_methods,
+    swig_DisplayList_Sf_SwigStatic_attributes,
+    swig_DisplayList_Sf_SwigStatic_constants,
+    swig_DisplayList_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_DisplayList_bases[] = {0};
+static const char *swig_DisplayList_base_names[] = {0};
+static swig_lua_class _wrap_class_DisplayList = { "DisplayList", "DisplayList", &SWIGTYPE_p_jvgs__video__DisplayList,_proxy__wrap_new_DisplayList, swig_delete_DisplayList, swig_DisplayList_methods, swig_DisplayList_attributes, &swig_DisplayList_Sf_SwigStatic, swig_DisplayList_meta, swig_DisplayList_bases, swig_DisplayList_base_names };
+
+static int _wrap_new_ListManager(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::ListManager *result = 0 ;
+    
+    SWIG_check_num_args("jvgs::video::ListManager::ListManager",0,0)
+    result = (jvgs::video::ListManager *)new jvgs::video::ListManager();
+    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__ListManager,1); SWIG_arg++; 
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
 static int _wrap_ListManager_getInstance(lua_State* L) {
   {
     int SWIG_arg = 0;
@@ -21146,21 +21954,125 @@ static int _wrap_ListManager_getInstance(lua_State* L) {
 }
 
 
-static int _wrap_ListManager_newList(lua_State* L) {
+static int _wrap_ListManager_createLists__SWIG_0(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
+    int arg2 ;
+    jvgs::video::ListManager::List result;
+    
+    SWIG_check_num_args("jvgs::video::ListManager::createLists",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::createLists",1,"jvgs::video::ListManager *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::createLists",2,"int");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
+      SWIG_fail_ptr("ListManager_createLists",1,SWIGTYPE_p_jvgs__video__ListManager);
+    }
+    
+    arg2 = (int)lua_tonumber(L, 2);
+    result = (jvgs::video::ListManager::List)(arg1)->createLists(arg2);
+    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_ListManager_createLists__SWIG_1(lua_State* L) {
   {
     int SWIG_arg = 0;
     jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
     jvgs::video::ListManager::List result;
     
-    SWIG_check_num_args("jvgs::video::ListManager::newList",1,1)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::newList",1,"jvgs::video::ListManager *");
+    SWIG_check_num_args("jvgs::video::ListManager::createLists",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::createLists",1,"jvgs::video::ListManager *");
     
     if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
-      SWIG_fail_ptr("ListManager_newList",1,SWIGTYPE_p_jvgs__video__ListManager);
+      SWIG_fail_ptr("ListManager_createLists",1,SWIGTYPE_p_jvgs__video__ListManager);
     }
     
-    result = (jvgs::video::ListManager::List)(arg1)->newList();
+    result = (jvgs::video::ListManager::List)(arg1)->createLists();
     lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_ListManager_createLists(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v = 0;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_jvgs__video__ListManager, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_ListManager_createLists__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v = 0;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_jvgs__video__ListManager, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_ListManager_createLists__SWIG_0(L);
+      }
+    }
+  }
+  
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ListManager_createLists'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    jvgs::video::ListManager::createLists(int)\n"
+    "    jvgs::video::ListManager::createLists()\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_ListManager_beginList(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
+    jvgs::video::ListManager::List *arg2 = 0 ;
+    jvgs::video::ListManager::List temp2 ;
+    
+    SWIG_check_num_args("jvgs::video::ListManager::beginList",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::beginList",1,"jvgs::video::ListManager *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::beginList",2,"jvgs::video::ListManager::List const &");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
+      SWIG_fail_ptr("ListManager_beginList",1,SWIGTYPE_p_jvgs__video__ListManager);
+    }
+    
+    SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative");
+    temp2=(jvgs::video::ListManager::List)lua_tonumber(L,2); arg2=&temp2;
+    (arg1)->beginList((jvgs::video::ListManager::List const &)*arg2);
+    
     return SWIG_arg;
     
     fail: SWIGUNUSED;
@@ -21264,34 +22176,6 @@ static int _wrap_ListManager_deleteLists__SWIG_0(lua_State* L) {
     int SWIG_arg = 0;
     jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
     jvgs::video::ListManager::List *arg2 = 0 ;
-    jvgs::video::ListManager::List temp2 ;
-    
-    SWIG_check_num_args("jvgs::video::ListManager::deleteLists",2,2)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::deleteLists",1,"jvgs::video::ListManager *");
-    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::deleteLists",2,"jvgs::video::ListManager::List const &");
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
-      SWIG_fail_ptr("ListManager_deleteLists",1,SWIGTYPE_p_jvgs__video__ListManager);
-    }
-    
-    SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative");
-    temp2=(jvgs::video::ListManager::List)lua_tonumber(L,2); arg2=&temp2;
-    (arg1)->deleteLists((jvgs::video::ListManager::List const &)*arg2);
-    
-    return SWIG_arg;
-    
-    fail: SWIGUNUSED;
-  }
-  lua_error(L);
-  return 0;
-}
-
-
-static int _wrap_ListManager_deleteLists__SWIG_1(lua_State* L) {
-  {
-    int SWIG_arg = 0;
-    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
-    jvgs::video::ListManager::List *arg2 = 0 ;
     int arg3 ;
     jvgs::video::ListManager::List temp2 ;
     
@@ -21308,6 +22192,34 @@ static int _wrap_ListManager_deleteLists__SWIG_1(lua_State* L) {
     temp2=(jvgs::video::ListManager::List)lua_tonumber(L,2); arg2=&temp2;
     arg3 = (int)lua_tonumber(L, 3);
     (arg1)->deleteLists((jvgs::video::ListManager::List const &)*arg2,arg3);
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_ListManager_deleteLists__SWIG_1(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
+    jvgs::video::ListManager::List *arg2 = 0 ;
+    jvgs::video::ListManager::List temp2 ;
+    
+    SWIG_check_num_args("jvgs::video::ListManager::deleteLists",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::deleteLists",1,"jvgs::video::ListManager *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::deleteLists",2,"jvgs::video::ListManager::List const &");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
+      SWIG_fail_ptr("ListManager_deleteLists",1,SWIGTYPE_p_jvgs__video__ListManager);
+    }
+    
+    SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative");
+    temp2=(jvgs::video::ListManager::List)lua_tonumber(L,2); arg2=&temp2;
+    (arg1)->deleteLists((jvgs::video::ListManager::List const &)*arg2);
     
     return SWIG_arg;
     
@@ -21340,7 +22252,7 @@ static int _wrap_ListManager_deleteLists(lua_State* L) {
         _v = lua_isnumber(L,argv[1]);
       }
       if (_v) {
-        return _wrap_ListManager_deleteLists__SWIG_0(L);
+        return _wrap_ListManager_deleteLists__SWIG_1(L);
       }
     }
   }
@@ -21363,7 +22275,7 @@ static int _wrap_ListManager_deleteLists(lua_State* L) {
           _v = lua_isnumber(L,argv[2]);
         }
         if (_v) {
-          return _wrap_ListManager_deleteLists__SWIG_1(L);
+          return _wrap_ListManager_deleteLists__SWIG_0(L);
         }
       }
     }
@@ -21371,130 +22283,44 @@ static int _wrap_ListManager_deleteLists(lua_State* L) {
   
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ListManager_deleteLists'\n"
     "  Possible C/C++ prototypes are:\n"
-    "    jvgs::video::ListManager::deleteLists(jvgs::video::ListManager::List const &)\n"
-    "    jvgs::video::ListManager::deleteLists(jvgs::video::ListManager::List const &,int)\n");
+    "    jvgs::video::ListManager::deleteLists(jvgs::video::ListManager::List const &,int)\n"
+    "    jvgs::video::ListManager::deleteLists(jvgs::video::ListManager::List const &)\n");
   lua_error(L);return 0;
 }
 
 
-static int _wrap_ListManager_createLists__SWIG_0(lua_State* L) {
+static int _wrap_ListManager_recordLine(lua_State* L) {
   {
     int SWIG_arg = 0;
     jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
-    jvgs::video::ListManager::List result;
+    float arg2 ;
+    float arg3 ;
+    float arg4 ;
+    float arg5 ;
+    jvgs::video::Color *arg6 = 0 ;
     
-    SWIG_check_num_args("jvgs::video::ListManager::createLists",1,1)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::createLists",1,"jvgs::video::ListManager *");
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
-      SWIG_fail_ptr("ListManager_createLists",1,SWIGTYPE_p_jvgs__video__ListManager);
-    }
-    
-    result = (jvgs::video::ListManager::List)(arg1)->createLists();
-    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-    return SWIG_arg;
-    
-    fail: SWIGUNUSED;
-  }
-  lua_error(L);
-  return 0;
-}
-
-
-static int _wrap_ListManager_createLists__SWIG_1(lua_State* L) {
-  {
-    int SWIG_arg = 0;
-    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
-    int arg2 ;
-    jvgs::video::ListManager::List result;
-    
-    SWIG_check_num_args("jvgs::video::ListManager::createLists",2,2)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::createLists",1,"jvgs::video::ListManager *");
-    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::createLists",2,"int");
+    SWIG_check_num_args("jvgs::video::ListManager::recordLine",6,6)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",1,"jvgs::video::ListManager *");
+    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",2,"float");
+    if(!lua_isnumber(L,3)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",3,"float");
+    if(!lua_isnumber(L,4)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",4,"float");
+    if(!lua_isnumber(L,5)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",5,"float");
+    if(!lua_isuserdata(L,6)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",6,"jvgs::video::Color const &");
     
     if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
-      SWIG_fail_ptr("ListManager_createLists",1,SWIGTYPE_p_jvgs__video__ListManager);
+      SWIG_fail_ptr("ListManager_recordLine",1,SWIGTYPE_p_jvgs__video__ListManager);
     }
     
-    arg2 = (int)lua_tonumber(L, 2);
-    result = (jvgs::video::ListManager::List)(arg1)->createLists(arg2);
-    lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-    return SWIG_arg;
+    arg2 = (float)lua_tonumber(L, 2);
+    arg3 = (float)lua_tonumber(L, 3);
+    arg4 = (float)lua_tonumber(L, 4);
+    arg5 = (float)lua_tonumber(L, 5);
     
-    fail: SWIGUNUSED;
-  }
-  lua_error(L);
-  return 0;
-}
-
-
-static int _wrap_ListManager_createLists(lua_State* L) {
-  int argc;
-  int argv[3]={
-    1,2,3
-  };
-  
-  argc = lua_gettop(L);
-  if (argc == 1) {
-    int _v = 0;
-    {
-      void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_jvgs__video__ListManager, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      return _wrap_ListManager_createLists__SWIG_0(L);
-    }
-  }
-  if (argc == 2) {
-    int _v = 0;
-    {
-      void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_jvgs__video__ListManager, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      {
-        _v = lua_isnumber(L,argv[1]);
-      }
-      if (_v) {
-        return _wrap_ListManager_createLists__SWIG_1(L);
-      }
-    }
-  }
-  
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ListManager_createLists'\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    jvgs::video::ListManager::createLists()\n"
-    "    jvgs::video::ListManager::createLists(int)\n");
-  lua_error(L);return 0;
-}
-
-
-static int _wrap_ListManager_beginList(lua_State* L) {
-  {
-    int SWIG_arg = 0;
-    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
-    jvgs::video::ListManager::List *arg2 = 0 ;
-    jvgs::video::ListManager::List temp2 ;
-    
-    SWIG_check_num_args("jvgs::video::ListManager::beginList",2,2)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::beginList",1,"jvgs::video::ListManager *");
-    if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::beginList",2,"jvgs::video::ListManager::List const &");
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
-      SWIG_fail_ptr("ListManager_beginList",1,SWIGTYPE_p_jvgs__video__ListManager);
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&arg6,SWIGTYPE_p_jvgs__video__Color,0))){
+      SWIG_fail_ptr("ListManager_recordLine",6,SWIGTYPE_p_jvgs__video__Color);
     }
     
-    SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative");
-    temp2=(jvgs::video::ListManager::List)lua_tonumber(L,2); arg2=&temp2;
-    (arg1)->beginList((jvgs::video::ListManager::List const &)*arg2);
+    (arg1)->recordLine(arg2,arg3,arg4,arg5,(jvgs::video::Color const &)*arg6);
     
     return SWIG_arg;
     
@@ -21505,14 +22331,51 @@ static int _wrap_ListManager_beginList(lua_State* L) {
 }
 
 
-static int _wrap_new_ListManager(lua_State* L) {
+static int _wrap_ListManager_recordTranslate(lua_State* L) {
   {
     int SWIG_arg = 0;
-    jvgs::video::ListManager *result = 0 ;
+    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
+    jvgs::math::Vector2D *arg2 = 0 ;
     
-    SWIG_check_num_args("jvgs::video::ListManager::ListManager",0,0)
-    result = (jvgs::video::ListManager *)new jvgs::video::ListManager();
-    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__ListManager,1); SWIG_arg++; 
+    SWIG_check_num_args("jvgs::video::ListManager::recordTranslate",2,2)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::recordTranslate",1,"jvgs::video::ListManager *");
+    if(!lua_isuserdata(L,2)) SWIG_fail_arg("jvgs::video::ListManager::recordTranslate",2,"jvgs::math::Vector2D const &");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
+      SWIG_fail_ptr("ListManager_recordTranslate",1,SWIGTYPE_p_jvgs__video__ListManager);
+    }
+    
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__math__Vector2D,0))){
+      SWIG_fail_ptr("ListManager_recordTranslate",2,SWIGTYPE_p_jvgs__math__Vector2D);
+    }
+    
+    (arg1)->recordTranslate((jvgs::math::Vector2D const &)*arg2);
+    
+    return SWIG_arg;
+    
+    fail: SWIGUNUSED;
+  }
+  lua_error(L);
+  return 0;
+}
+
+
+static int _wrap_ListManager_getIsRecording(lua_State* L) {
+  {
+    int SWIG_arg = 0;
+    jvgs::video::ListManager *arg1 = (jvgs::video::ListManager *) 0 ;
+    bool result;
+    
+    SWIG_check_num_args("jvgs::video::ListManager::getIsRecording",1,1)
+    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::getIsRecording",1,"jvgs::video::ListManager const *");
+    
+    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
+      SWIG_fail_ptr("ListManager_getIsRecording",1,SWIGTYPE_p_jvgs__video__ListManager);
+    }
+    
+    result = (bool)((jvgs::video::ListManager const *)arg1)->getIsRecording();
+    lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
     return SWIG_arg;
     
     fail: SWIGUNUSED;
@@ -21538,13 +22401,15 @@ static swig_lua_attribute swig_ListManager_attributes[] = {
     {0,0,0}
 };
 static swig_lua_method swig_ListManager_methods[]= {
-    { "newList", _wrap_ListManager_newList},
+    { "createLists", _wrap_ListManager_createLists},
+    { "beginList", _wrap_ListManager_beginList},
     { "endList", _wrap_ListManager_endList},
     { "callList", _wrap_ListManager_callList},
     { "callLists", _wrap_ListManager_callLists},
     { "deleteLists", _wrap_ListManager_deleteLists},
-    { "createLists", _wrap_ListManager_createLists},
-    { "beginList", _wrap_ListManager_beginList},
+    { "recordLine", _wrap_ListManager_recordLine},
+    { "recordTranslate", _wrap_ListManager_recordTranslate},
+    { "getIsRecording", _wrap_ListManager_getIsRecording},
     {0,0}
 };
 static swig_lua_method swig_ListManager_meta[] = {
@@ -21874,6 +22739,8 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {SWIG_LUA_CONSTTAB_INT("RENDERTYPE_QUADS", (jvgs::video::RENDERTYPE_QUADS))},
     {SWIG_LUA_CONSTTAB_INT("RENDERTYPE_POLYGON", (jvgs::video::RENDERTYPE_POLYGON))},
     {SWIG_LUA_CONSTTAB_INT("RENDERTYPE_CONCAVE_POLYGON", (jvgs::video::RENDERTYPE_CONCAVE_POLYGON))},
+    {SWIG_LUA_CONSTTAB_INT("OP_LINE", (jvgs::video::OP_LINE))},
+    {SWIG_LUA_CONSTTAB_INT("OP_TRANSLATE", (jvgs::video::OP_TRANSLATE))},
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
@@ -21974,6 +22841,10 @@ static swig_lua_class* swig_SwigModule_classes[]= {
 &_wrap_class_Renderer,
 &_wrap_class_DataRenderer,
 &_wrap_class_VideoManager,
+&_wrap_class_CachedLine,
+&_wrap_class_CachedTransform,
+&_wrap_class_DisplayListOp,
+&_wrap_class_DisplayList,
 &_wrap_class_ListManager,
 &_wrap_class_SketchyRenderer,
     0
@@ -22344,8 +23215,12 @@ static swig_type_info _swigt__p_jvgs__sketch__Sketch = {"_p_jvgs__sketch__Sketch
 static swig_type_info _swigt__p_jvgs__sketch__SketchElement = {"_p_jvgs__sketch__SketchElement", "jvgs::sketch::SketchElement *", 0, 0, (void*)&_wrap_class_SketchElement, 0};
 static swig_type_info _swigt__p_jvgs__sketch__SketchElementRenderer = {"_p_jvgs__sketch__SketchElementRenderer", "jvgs::sketch::SketchElementRenderer *", 0, 0, (void*)&_wrap_class_SketchElementRenderer, 0};
 static swig_type_info _swigt__p_jvgs__sketch__SketchManager = {"_p_jvgs__sketch__SketchManager", "jvgs::sketch::SketchManager *", 0, 0, (void*)&_wrap_class_SketchManager, 0};
+static swig_type_info _swigt__p_jvgs__video__CachedLine = {"_p_jvgs__video__CachedLine", "jvgs::video::CachedLine *", 0, 0, (void*)&_wrap_class_CachedLine, 0};
+static swig_type_info _swigt__p_jvgs__video__CachedTransform = {"_p_jvgs__video__CachedTransform", "jvgs::video::CachedTransform *", 0, 0, (void*)&_wrap_class_CachedTransform, 0};
 static swig_type_info _swigt__p_jvgs__video__Color = {"_p_jvgs__video__Color", "video::Color *|jvgs::video::Color *", 0, 0, (void*)&_wrap_class_Color, 0};
 static swig_type_info _swigt__p_jvgs__video__DataRenderer = {"_p_jvgs__video__DataRenderer", "jvgs::video::DataRenderer *", 0, 0, (void*)&_wrap_class_DataRenderer, 0};
+static swig_type_info _swigt__p_jvgs__video__DisplayList = {"_p_jvgs__video__DisplayList", "jvgs::video::DisplayList *", 0, 0, (void*)&_wrap_class_DisplayList, 0};
+static swig_type_info _swigt__p_jvgs__video__DisplayListOp = {"_p_jvgs__video__DisplayListOp", "jvgs::video::DisplayListOp *", 0, 0, (void*)&_wrap_class_DisplayListOp, 0};
 static swig_type_info _swigt__p_jvgs__video__FPSLogger = {"_p_jvgs__video__FPSLogger", "jvgs::video::FPSLogger *", 0, 0, (void*)&_wrap_class_FPSLogger, 0};
 static swig_type_info _swigt__p_jvgs__video__ListManager = {"_p_jvgs__video__ListManager", "jvgs::video::ListManager *", 0, 0, (void*)&_wrap_class_ListManager, 0};
 static swig_type_info _swigt__p_jvgs__video__Renderer = {"_p_jvgs__video__Renderer", "video::Renderer *|jvgs::video::Renderer *", 0, 0, (void*)&_wrap_class_Renderer, 0};
@@ -22355,6 +23230,7 @@ static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
 static swig_type_info _swigt__p_std__vectorT_jvgs__math__BoundedObject_p_t = {"_p_std__vectorT_jvgs__math__BoundedObject_p_t", "std::vector< jvgs::math::BoundedObject * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_jvgs__math__Vector2D_t = {"_p_std__vectorT_jvgs__math__Vector2D_t", "std::vector< jvgs::math::Vector2D > *|std::vector< Vector2D > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_jvgs__video__DisplayListOp_t = {"_p_std__vectorT_jvgs__video__DisplayListOp_t", "std::vector< jvgs::video::DisplayListOp > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -22433,8 +23309,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_jvgs__sketch__SketchElement,
   &_swigt__p_jvgs__sketch__SketchElementRenderer,
   &_swigt__p_jvgs__sketch__SketchManager,
+  &_swigt__p_jvgs__video__CachedLine,
+  &_swigt__p_jvgs__video__CachedTransform,
   &_swigt__p_jvgs__video__Color,
   &_swigt__p_jvgs__video__DataRenderer,
+  &_swigt__p_jvgs__video__DisplayList,
+  &_swigt__p_jvgs__video__DisplayListOp,
   &_swigt__p_jvgs__video__FPSLogger,
   &_swigt__p_jvgs__video__ListManager,
   &_swigt__p_jvgs__video__Renderer,
@@ -22444,6 +23324,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__string,
   &_swigt__p_std__vectorT_jvgs__math__BoundedObject_p_t,
   &_swigt__p_std__vectorT_jvgs__math__Vector2D_t,
+  &_swigt__p_std__vectorT_jvgs__video__DisplayListOp_t,
   &_swigt__p_unsigned_char,
 };
 
@@ -22522,8 +23403,12 @@ static swig_cast_info _swigc__p_jvgs__sketch__Sketch[] = {  {&_swigt__p_jvgs__sk
 static swig_cast_info _swigc__p_jvgs__sketch__SketchElement[] = {  {&_swigt__p_jvgs__sketch__SketchElement, 0, 0, 0},  {&_swigt__p_jvgs__sketch__Group, _p_jvgs__sketch__GroupTo_p_jvgs__sketch__SketchElement, 0, 0},  {&_swigt__p_jvgs__sketch__Path, _p_jvgs__sketch__PathTo_p_jvgs__sketch__SketchElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__sketch__SketchElementRenderer[] = {  {&_swigt__p_jvgs__sketch__SketchElementRenderer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__sketch__SketchManager[] = {  {&_swigt__p_jvgs__sketch__SketchManager, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_jvgs__video__CachedLine[] = {  {&_swigt__p_jvgs__video__CachedLine, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_jvgs__video__CachedTransform[] = {  {&_swigt__p_jvgs__video__CachedTransform, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__video__Color[] = {  {&_swigt__p_jvgs__video__Color, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__video__DataRenderer[] = {  {&_swigt__p_jvgs__video__DataRenderer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_jvgs__video__DisplayList[] = {  {&_swigt__p_jvgs__video__DisplayList, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_jvgs__video__DisplayListOp[] = {  {&_swigt__p_jvgs__video__DisplayListOp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__video__FPSLogger[] = {  {&_swigt__p_jvgs__video__FPSLogger, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__video__ListManager[] = {  {&_swigt__p_jvgs__video__ListManager, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_jvgs__video__Renderer[] = {  {&_swigt__p_jvgs__video__Renderer, 0, 0, 0},  {&_swigt__p_jvgs__video__DataRenderer, _p_jvgs__video__DataRendererTo_p_jvgs__video__Renderer, 0, 0},  {&_swigt__p_jvgs__video__SketchyRenderer, _p_jvgs__video__SketchyRendererTo_p_jvgs__video__Renderer, 0, 0},{0, 0, 0, 0}};
@@ -22533,6 +23418,7 @@ static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_jvgs__math__BoundedObject_p_t[] = {  {&_swigt__p_std__vectorT_jvgs__math__BoundedObject_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_jvgs__math__Vector2D_t[] = {  {&_swigt__p_std__vectorT_jvgs__math__Vector2D_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_jvgs__video__DisplayListOp_t[] = {  {&_swigt__p_std__vectorT_jvgs__video__DisplayListOp_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -22611,8 +23497,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_jvgs__sketch__SketchElement,
   _swigc__p_jvgs__sketch__SketchElementRenderer,
   _swigc__p_jvgs__sketch__SketchManager,
+  _swigc__p_jvgs__video__CachedLine,
+  _swigc__p_jvgs__video__CachedTransform,
   _swigc__p_jvgs__video__Color,
   _swigc__p_jvgs__video__DataRenderer,
+  _swigc__p_jvgs__video__DisplayList,
+  _swigc__p_jvgs__video__DisplayListOp,
   _swigc__p_jvgs__video__FPSLogger,
   _swigc__p_jvgs__video__ListManager,
   _swigc__p_jvgs__video__Renderer,
@@ -22622,6 +23512,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__string,
   _swigc__p_std__vectorT_jvgs__math__BoundedObject_p_t,
   _swigc__p_std__vectorT_jvgs__math__Vector2D_t,
+  _swigc__p_std__vectorT_jvgs__video__DisplayListOp_t,
   _swigc__p_unsigned_char,
 };
 

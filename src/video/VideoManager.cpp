@@ -1,5 +1,6 @@
 #include "VideoManager.h"
 #include "Renderer.h"
+#include "ListManager.h"
 
 #include <SDL2/SDL.h>
 #include <stack>
@@ -122,6 +123,12 @@ namespace jvgs
 
         void VideoManager::translate(const Vector2D &vector)
         {
+            // Record translation if we're recording a display list
+            ListManager* lm = ListManager::getInstance();
+            if (lm->getIsRecording()) {
+                lm->recordTranslate(vector);
+            }
+            
             currentMatrix.translate(vector);
         }
 
