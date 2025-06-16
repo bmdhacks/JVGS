@@ -63,11 +63,30 @@ namespace jvgs
                 
                 // Get current drawing color (may have been inverted)
                 const Color& currentColor = vm->getColor();
-                SDL_SetRenderDrawColor(renderer,
-                    (Uint8)(currentColor.getRed() * 255),
-                    (Uint8)(currentColor.getGreen() * 255),
-                    (Uint8)(currentColor.getBlue() * 255),
-                    (Uint8)(currentColor.getAlpha() * 255));
+                
+                // Choose blend mode based on whether we're drawing light or dark lines
+                SDL_BlendMode oldBlendMode;
+                SDL_GetRenderDrawBlendMode(renderer, &oldBlendMode);
+                
+                float brightness = currentColor.getRed() + currentColor.getGreen() + currentColor.getBlue();
+                
+                if (brightness < 1.5f) {
+                    // Dark lines (black) - use multiplicative to darken white background
+                    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_MOD);
+                    SDL_SetRenderDrawColor(renderer,
+                        (Uint8)(255 * 0.7f),  // Light gray that darkens when multiplied
+                        (Uint8)(255 * 0.7f),
+                        (Uint8)(255 * 0.7f),
+                        (Uint8)(currentColor.getAlpha() * 255));
+                } else {
+                    // Light lines (white) - use additive to brighten black background
+                    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
+                    SDL_SetRenderDrawColor(renderer,
+                        (Uint8)(currentColor.getRed() * 255 * 0.3f),
+                        (Uint8)(currentColor.getGreen() * 255 * 0.3f),
+                        (Uint8)(currentColor.getBlue() * 255 * 0.3f),
+                        (Uint8)(currentColor.getAlpha() * 255));
+                }
                 
                 // Replay all cached operations with current transformation and color
                 for (const auto& op : it->second->operations) {
@@ -77,12 +96,21 @@ namespace jvgs
                         auto v1 = matrix * Vector2D(line.x1, line.y1);
                         auto v2 = matrix * Vector2D(line.x2, line.y2);
                         
-                        SDL_RenderDrawLineF(renderer, v1.getX(), v1.getY(), v2.getX(), v2.getY());
+                        // Draw multiple lines with slight offsets for antialiasing effect
+                        float offsets[] = {0.0f, 0.3f, -0.3f, 0.6f, -0.6f};
+                        for (float offset : offsets) {
+                            SDL_RenderDrawLineF(renderer, 
+                                v1.getX() + offset, v1.getY() + offset, 
+                                v2.getX() + offset, v2.getY() + offset);
+                        }
                     } else if (op.type == OP_TRANSLATE) {
                         // Apply the recorded translation to current matrix
                         vm->translate(op.transform.translation);
                     }
                 }
+                
+                // Restore original blend mode
+                SDL_SetRenderDrawBlendMode(renderer, oldBlendMode);
             }
         }
 
