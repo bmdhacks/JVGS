@@ -7,7 +7,7 @@ events.trigger{
             collider:set("weapon", "knife")
             self:setGarbage()
             effects.staticText(self:getPosition() + jvgslua.Vector2D(0, -100),
-                    "left ctrl to throw a knife")
+                    "B button to throw a knife")
         end
     end
 }

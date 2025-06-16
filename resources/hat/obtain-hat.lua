@@ -7,7 +7,7 @@ events.trigger{
             collider:set("weapon", "hat")
             self:setGarbage()
             effects.staticText(self:getPosition() + jvgslua.Vector2D(0, -100),
-                    "left ctrl to jump in-air")
+                    "B button to jump in-air")
         end
     end
 }
