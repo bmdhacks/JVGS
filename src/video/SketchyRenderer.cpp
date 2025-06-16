@@ -58,8 +58,8 @@ namespace jvgs
                     
                     // Record line if we're recording a display list, otherwise draw directly
                     if (lm->getIsRecording()) {
-                        // Store raw coordinates - transformation applied during callList
-                        lm->recordLine(x1, y1, x2, y2, color);
+                        // Store raw coordinates - transformation and color applied during callList
+                        lm->recordLine(x1, y1, x2, y2);
                     } else {
                         // Apply current transformation matrix for direct rendering
                         const AffineTransformationMatrix& matrix = vm->getCurrentMatrix();

@@ -14,7 +14,7 @@ namespace jvgs
     {
         struct CachedLine {
             float x1, y1, x2, y2;
-            Color color;
+            // Note: Don't cache color - use current color during playback like OpenGL
         };
         
         struct CachedTransform {
@@ -45,6 +45,7 @@ namespace jvgs
             unsigned int nextListId;
             unsigned int currentRecordingList;
             bool isRecording;
+            bool isDestroying;
             
         public:
             typedef unsigned int List;
@@ -62,7 +63,7 @@ namespace jvgs
             void deleteLists(const List &list, int number = 1);
             
             // Recording interface for SketchyRenderer and VideoManager
-            void recordLine(float x1, float y1, float x2, float y2, const Color& color);
+            void recordLine(float x1, float y1, float x2, float y2);
             void recordTranslate(const jvgs::math::Vector2D& translation);
             bool getIsRecording() const { return isRecording; }
         };

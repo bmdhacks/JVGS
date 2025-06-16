@@ -25,11 +25,13 @@ namespace jvgs
         {
             this->x1 = MathManager::getInstance()->min(x1, x2);
             this->x2 = MathManager::getInstance()->max(x1, x2);
+            toX1 = true;  // Start by moving toward x1
         }
 
         PatrollingController::PatrollingController(Entity *entity,
                 TiXmlElement *element): Controller(entity)
         {
+            toX1 = true;  // Initialize before loading
             load(element);
         }
 

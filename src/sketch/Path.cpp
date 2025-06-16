@@ -19,6 +19,7 @@ namespace jvgs
         Path::Path(SketchElement *parent): SketchElement(parent)
         {
             boundingBox = 0;
+            list = 0;  // Initialize to invalid display list ID
         }
 
         Path::~Path()
@@ -26,7 +27,11 @@ namespace jvgs
             for(vector<PathComponent*>::iterator iterator = components.begin();
                     iterator != components.end(); iterator++)
                 delete (*iterator);
-            ListManager::getInstance()->deleteLists(list);
+            
+            // Only delete display list if it was actually created
+            if (list != 0) {
+                ListManager::getInstance()->deleteLists(list);
+            }
 
             if(boundingBox)
                 delete boundingBox;

@@ -21334,60 +21334,6 @@ static int _wrap_CachedLine_y2_get(lua_State* L) {
 }
 
 
-static int _wrap_CachedLine_color_set(lua_State* L) {
-  {
-    int SWIG_arg = 0;
-    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
-    jvgs::video::Color *arg2 = (jvgs::video::Color *) 0 ;
-    
-    SWIG_check_num_args("jvgs::video::CachedLine::color",2,2)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::color",1,"jvgs::video::CachedLine *");
-    if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("jvgs::video::CachedLine::color",2,"jvgs::video::Color *");
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
-      SWIG_fail_ptr("CachedLine_color_set",1,SWIGTYPE_p_jvgs__video__CachedLine);
-    }
-    
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_jvgs__video__Color,0))){
-      SWIG_fail_ptr("CachedLine_color_set",2,SWIGTYPE_p_jvgs__video__Color);
-    }
-    
-    if (arg1) (arg1)->color = *arg2;
-    
-    return SWIG_arg;
-    
-    fail: SWIGUNUSED;
-  }
-  lua_error(L);
-  return 0;
-}
-
-
-static int _wrap_CachedLine_color_get(lua_State* L) {
-  {
-    int SWIG_arg = 0;
-    jvgs::video::CachedLine *arg1 = (jvgs::video::CachedLine *) 0 ;
-    jvgs::video::Color *result = 0 ;
-    
-    SWIG_check_num_args("jvgs::video::CachedLine::color",1,1)
-    if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::CachedLine::color",1,"jvgs::video::CachedLine *");
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__CachedLine,0))){
-      SWIG_fail_ptr("CachedLine_color_get",1,SWIGTYPE_p_jvgs__video__CachedLine);
-    }
-    
-    result = (jvgs::video::Color *)& ((arg1)->color);
-    SWIG_NewPointerObj(L,result,SWIGTYPE_p_jvgs__video__Color,0); SWIG_arg++; 
-    return SWIG_arg;
-    
-    fail: SWIGUNUSED;
-  }
-  lua_error(L);
-  return 0;
-}
-
-
 static int _wrap_new_CachedLine(lua_State* L) {
   {
     int SWIG_arg = 0;
@@ -21422,7 +21368,6 @@ static swig_lua_attribute swig_CachedLine_attributes[] = {
     { "y1", _wrap_CachedLine_y1_get, _wrap_CachedLine_y1_set },
     { "x2", _wrap_CachedLine_x2_get, _wrap_CachedLine_x2_set },
     { "y2", _wrap_CachedLine_y2_get, _wrap_CachedLine_y2_set },
-    { "color", _wrap_CachedLine_color_get, _wrap_CachedLine_color_set },
     {0,0,0}
 };
 static swig_lua_method swig_CachedLine_methods[]= {
@@ -22297,15 +22242,13 @@ static int _wrap_ListManager_recordLine(lua_State* L) {
     float arg3 ;
     float arg4 ;
     float arg5 ;
-    jvgs::video::Color *arg6 = 0 ;
     
-    SWIG_check_num_args("jvgs::video::ListManager::recordLine",6,6)
+    SWIG_check_num_args("jvgs::video::ListManager::recordLine",5,5)
     if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",1,"jvgs::video::ListManager *");
     if(!lua_isnumber(L,2)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",2,"float");
     if(!lua_isnumber(L,3)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",3,"float");
     if(!lua_isnumber(L,4)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",4,"float");
     if(!lua_isnumber(L,5)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",5,"float");
-    if(!lua_isuserdata(L,6)) SWIG_fail_arg("jvgs::video::ListManager::recordLine",6,"jvgs::video::Color const &");
     
     if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_jvgs__video__ListManager,0))){
       SWIG_fail_ptr("ListManager_recordLine",1,SWIGTYPE_p_jvgs__video__ListManager);
@@ -22315,12 +22258,7 @@ static int _wrap_ListManager_recordLine(lua_State* L) {
     arg3 = (float)lua_tonumber(L, 3);
     arg4 = (float)lua_tonumber(L, 4);
     arg5 = (float)lua_tonumber(L, 5);
-    
-    if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&arg6,SWIGTYPE_p_jvgs__video__Color,0))){
-      SWIG_fail_ptr("ListManager_recordLine",6,SWIGTYPE_p_jvgs__video__Color);
-    }
-    
-    (arg1)->recordLine(arg2,arg3,arg4,arg5,(jvgs::video::Color const &)*arg6);
+    (arg1)->recordLine(arg2,arg3,arg4,arg5);
     
     return SWIG_arg;
     
