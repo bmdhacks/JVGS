@@ -68,40 +68,19 @@ namespace jvgs
                         
                         SDL_Renderer* renderer = vm->getSDLRenderer();
                         if (renderer) {
-                            // Choose blend mode based on whether we're drawing light or dark lines
-                            SDL_BlendMode oldBlendMode;
-                            SDL_GetRenderDrawBlendMode(renderer, &oldBlendMode);
+                            SDL_SetRenderDrawColor(renderer,
+                                (Uint8)(color.getRed() * 255),
+                                (Uint8)(color.getGreen() * 255),
+                                (Uint8)(color.getBlue() * 255),
+                                (Uint8)(color.getAlpha() * 255));
                             
-                            float brightness = color.getRed() + color.getGreen() + color.getBlue();
-                            
-                            if (brightness < 1.5f) {
-                                // Dark lines (black) - use multiplicative to darken white background
-                                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_MOD);
-                                SDL_SetRenderDrawColor(renderer,
-                                    (Uint8)(255 * 0.7f),  // Light gray that darkens when multiplied
-                                    (Uint8)(255 * 0.7f),
-                                    (Uint8)(255 * 0.7f),
-                                    (Uint8)(color.getAlpha() * 255));
-                            } else {
-                                // Light lines (white) - use additive to brighten black background
-                                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
-                                SDL_SetRenderDrawColor(renderer,
-                                    (Uint8)(color.getRed() * 255 * 0.3f),
-                                    (Uint8)(color.getGreen() * 255 * 0.3f),
-                                    (Uint8)(color.getBlue() * 255 * 0.3f),
-                                    (Uint8)(color.getAlpha() * 255));
-                            }
-                            
-                            // Draw multiple lines with slight offsets for antialiasing effect
-                            float offsets[] = {0.0f, 0.3f, -0.3f, 0.6f, -0.6f};
+                            // Draw 3 antialiased lines with offsets
+                            float offsets[] = {0.0f, 0.3f, -0.3f};
                             for (float offset : offsets) {
                                 SDL_RenderDrawLineF(renderer, 
                                     tv1.getX() + offset, tv1.getY() + offset, 
                                     tv2.getX() + offset, tv2.getY() + offset);
                             }
-                            
-                            // Restore original blend mode
-                            SDL_SetRenderDrawBlendMode(renderer, oldBlendMode);
                         }
                     }
                 }

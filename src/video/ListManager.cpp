@@ -96,8 +96,8 @@ namespace jvgs
                         auto v1 = matrix * Vector2D(line.x1, line.y1);
                         auto v2 = matrix * Vector2D(line.x2, line.y2);
                         
-                        // Draw multiple lines with slight offsets for antialiasing effect
-                        float offsets[] = {0.0f, 0.3f, -0.3f, 0.6f, -0.6f};
+                        // Draw 3 antialiased lines with offsets
+                        float offsets[] = {0.0f, 0.3f, -0.3f};
                         for (float offset : offsets) {
                             SDL_RenderDrawLineF(renderer, 
                                 v1.getX() + offset, v1.getY() + offset, 
